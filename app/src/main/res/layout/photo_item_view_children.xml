@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/item_photo_poster_profile_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:layout_marginRight="5sp"
+            android:layout_marginBottom="5sp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin" />
+
+        <TextView
+            android:id="@+id/item_photo_poster_full_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/item_photo_poster_profile_image"
+            android:textColor="@color/colorSubdued"
+            android:textSize="10sp"/>
+
+        <TextView
+            android:id="@+id/item_photo_poster_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/item_photo_poster_profile_image"
+            android:layout_below="@id/item_photo_poster_full_name"
+            android:textColor="@color/colorProminent"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/item_photo_posted_at"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorSubdued"
+            android:drawableLeft="@drawable/ic_clock_icon"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:textSize="10sp"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"/>
+
+
+    <ImageView
+        android:id="@+id/item_photo_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:layout_below="@id/item_photo_poster_profile_image"
+        android:padding="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"/>
+
+    <TextView
+        android:id="@+id/item_photo_caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_photo_image"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"/>
+
+    <TextView
+        android:id="@+id/item_photo_like_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorProminent"
+        android:drawableLeft="@drawable/ic_heart_icon"
+        android:drawablePadding="0sp"
+        android:layout_below="@id/item_photo_caption"
+        android:layout_alignParentLeft="true"
+        android:gravity="center"
+        android:textSize="10sp"/>
+
+    <TextView
+        android:id="@+id/item_photo_comment_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorProminent"
+        android:drawableLeft="@drawable/ic_comments_icon"
+        android:layout_below="@id/item_photo_caption"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:textSize="10sp"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"/>
+
+    <LinearLayout
+        android:id="@+id/item_photo_comments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/item_photo_comment_count"
+        android:layout_marginBottom="10dp"
+        android:paddingBottom="10dp"/>
+
+</merge>
