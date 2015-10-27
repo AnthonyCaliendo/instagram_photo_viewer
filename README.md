@@ -32,6 +32,9 @@ The following **additional** features are implemented:
 
 * [x] Display commenter user profile image
 * [x] Display poster's full name
+* [x] display error dialog on connection issues
+
+![connection-error-dialog.png](connection-error-dialog.png)
 
 ## Video Walkthrough 
 

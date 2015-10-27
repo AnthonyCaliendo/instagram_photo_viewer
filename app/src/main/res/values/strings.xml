@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Instagram Photo Viewer</string>
-    <string name="action_settings">Settings</string>
 
-    <string name="view_popular_stream_title">Popular Photos</string>
+    <!-- view popular photos -->
+    <string name="view_popular_stream_network_fail_dialog_title">Unable to connect</string>
+    <string name="view_popular_stream_network_fail_dialog_message">Unable to connect to Instagram. Please try again later.</string>
+    <string name="view_popular_stream_network_fail_dialog_ok">Bummer</string>
+
 </resources>

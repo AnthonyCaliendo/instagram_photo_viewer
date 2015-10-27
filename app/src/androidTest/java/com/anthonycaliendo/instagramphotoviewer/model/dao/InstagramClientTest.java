@@ -192,6 +192,24 @@ public class InstagramClientTest extends AndroidTestCase {
             "}";
 
     /**
+     * Used to record responses passed into the handlers.
+     */
+    private class RecordingResponseHandler implements InstagramClient.ResponseHandler {
+        public List<Photo> photos;
+        public boolean isFailed = false;
+
+        @Override
+        public void onSuccess(List<Photo> photos) {
+            this.photos = photos;
+        }
+
+        @Override
+        public void onFail() {
+            this.isFailed = true;
+        }
+    }
+
+    /**
      * Creates an {@link InstagramClient} with a stub {@link AsyncHttpClient} which will immediately
      * callback with a successful response using the specified payload.
      *
@@ -215,17 +233,10 @@ public class InstagramClientTest extends AndroidTestCase {
 
         final InstagramClient instagramClient = new InstagramClient(stubbedAsyncClient);
 
-        class RecordingResponseHandler implements InstagramClient.ResponseHandler {
-            public List<Photo> photos;
-            @Override
-            public void onSuccess(List<Photo> photos) {
-                this.photos = photos;
-            }
-        }
-
         final RecordingResponseHandler responseHandler = new RecordingResponseHandler();
         instagramClient.fetchPopularPhotos(responseHandler);
 
+        assertFalse("response should not have failed", responseHandler.isFailed);
         assertNotNull("photos should not be null", responseHandler.photos);
 
         return responseHandler.photos;
@@ -278,11 +289,16 @@ public class InstagramClientTest extends AndroidTestCase {
             }
         });
 
-        instagramClient.fetchPopularPhotos(new InstagramClient.ResponseHandler(){
+        final RecordingResponseHandler responseHandler = new RecordingResponseHandler() {
+            @Override
             public void onSuccess(List<Photo> photos) {
                 fail("should not invoke the success callback");
             }
-        });
+        };
+
+        instagramClient.fetchPopularPhotos(responseHandler);
+
+        assertTrue("should invoke onFail handler", responseHandler.isFailed);
     }
 
     public void testFetchPopularPhotos_NoDataBlock_ReturnsEmptyList() {
@@ -374,10 +390,7 @@ public class InstagramClientTest extends AndroidTestCase {
         final RecordingAsyncHttpClient asyncHttpClient = new RecordingAsyncHttpClient();
         final InstagramClient instagramClient  = new InstagramClient(asyncHttpClient);
 
-        instagramClient.fetchPopularPhotos(new InstagramClient.ResponseHandler() {
-            public void onSuccess(List<Photo> photos) {
-            }
-        });
+        instagramClient.fetchPopularPhotos(new RecordingResponseHandler());
 
         assertEquals("should pass correct url into remoter", "https://api.instagram.com/v1/media/popular", asyncHttpClient.invokedUrl);
         assertEquals("should pass correct client_id", "thisIsMyClientId", asyncHttpClient.requestParams.get("client_id"));

@@ -41,6 +41,11 @@ public class InstagramClient {
          *      the list of photos being returned
          */
         void onSuccess(List<Photo> photos);
+
+        /**
+         * Callback method invoked when unable to retrieve a response for any reason.
+         */
+        void onFail();
     }
 
     /**
@@ -90,6 +95,7 @@ public class InstagramClient {
                 @Override
                 public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                     debug(this, "method=fetchPopularPhotos handler=onFailure statusCode=" + statusCode);
+                    responseHandler.onFail();
                 }
             });
         } catch (final Exception e){
