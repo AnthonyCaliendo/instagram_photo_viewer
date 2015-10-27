@@ -21,6 +21,16 @@ public class Configuration {
      *      the client id used to make Instagram requests
      */
     public static String getInstagramClientId() {
-        throw new RuntimeException("you must add the client id into " + Configuration.class.getName() + ".");
+        throw new RuntimeException("please enter a client id in " + Configuration.class.getName() + ".'");
+    }
+
+    /**
+     * The url used to fetch popular media (photos and video) from Instagram.
+     *
+     * @return
+     *      the popular media url
+     */
+    public static String getInstagramPopularMediaUrl() {
+        return "https://api.instagram.com/v1/media/popular";
     }
 }

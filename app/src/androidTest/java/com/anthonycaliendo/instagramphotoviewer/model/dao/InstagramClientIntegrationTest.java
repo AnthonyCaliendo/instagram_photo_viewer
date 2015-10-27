@@ -16,14 +16,6 @@ import java.util.concurrent.TimeUnit;
 public class InstagramClientIntegrationTest extends AndroidTestCase {
 
     public void testFetchPopularPhotos_LoadsDataFromInstagram() throws Exception {
-        class RecordingResponseHandler implements InstagramClient.ResponseHandler {
-            public List<Photo> photos = null;
-            @Override
-            public void onSuccess(List<Photo> photos) {
-                this.photos = photos;
-            }
-        }
-
         final InstagramClient client                   = new InstagramClient(new AsyncHttpClient());
         final RecordingResponseHandler responseHandler = new RecordingResponseHandler();
         final ExecutorService executor                 = Executors.newFixedThreadPool(2);
