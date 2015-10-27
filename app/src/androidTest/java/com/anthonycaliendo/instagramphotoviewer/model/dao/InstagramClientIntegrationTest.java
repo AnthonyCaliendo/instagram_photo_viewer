@@ -4,7 +4,6 @@ import android.os.Looper;
 import android.test.AndroidTestCase;
 
 import com.anthonycaliendo.instagramphotoviewer.model.Photo;
-import com.anthonycaliendo.instagramphotoviewer.util.Configuration;
 import com.loopj.android.http.AsyncHttpClient;
 
 import java.util.List;
@@ -25,7 +24,7 @@ public class InstagramClientIntegrationTest extends AndroidTestCase {
             }
         }
 
-        final InstagramClient client                   = new InstagramClient(new AsyncHttpClient(), Configuration.getInstagramClientId(getContext().getAssets()));
+        final InstagramClient client                   = new InstagramClient(new AsyncHttpClient());
         final RecordingResponseHandler responseHandler = new RecordingResponseHandler();
         final ExecutorService executor                 = Executors.newFixedThreadPool(2);
         final Future<List<Photo>> instagramCallFuture  = executor.submit(new Callable<List<Photo>>() {

@@ -3,6 +3,7 @@ package com.anthonycaliendo.instagramphotoviewer.model.dao;
 import com.anthonycaliendo.instagramphotoviewer.model.Comment;
 import com.anthonycaliendo.instagramphotoviewer.model.Photo;
 import com.anthonycaliendo.instagramphotoviewer.model.User;
+import com.anthonycaliendo.instagramphotoviewer.util.Configuration;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -55,15 +56,13 @@ public class InstagramClient {
     /**
      * Instantiates an Instagram client which can make calls to instagram.
      * Requests are made asynchronously, and will invoke callbacks when they complete.
-     *
-     * @param asyncHttpClient
+     *  @param asyncHttpClient
      *      the {@link AsyncHttpClient} to use to make requests
-     * @param clientId
-     *      the client id to use to make requests
+     *
      */
-    public InstagramClient(final AsyncHttpClient asyncHttpClient, final String clientId) {
+    public InstagramClient(final AsyncHttpClient asyncHttpClient) {
         this.asyncHttpClient = asyncHttpClient;
-        this.clientId        = clientId;
+        this.clientId        = Configuration.getInstagramClientId();
     }
 
     /**

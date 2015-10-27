@@ -213,7 +213,7 @@ public class InstagramClientTest extends AndroidTestCase {
             }
         };
 
-        final InstagramClient instagramClient = new InstagramClient(stubbedAsyncClient, CLIENT_ID);
+        final InstagramClient instagramClient = new InstagramClient(stubbedAsyncClient);
 
         class RecordingResponseHandler implements InstagramClient.ResponseHandler {
             public List<Photo> photos;
@@ -276,7 +276,7 @@ public class InstagramClientTest extends AndroidTestCase {
             public RequestHandle get(final String url, final ResponseHandlerInterface responseHandler) {
                 throw new RuntimeException("the roof");
             }
-        }, CLIENT_ID);
+        });
 
         instagramClient.fetchPopularPhotos(new InstagramClient.ResponseHandler(){
             public void onSuccess(List<Photo> photos) {
@@ -372,7 +372,7 @@ public class InstagramClientTest extends AndroidTestCase {
         }
 
         final RecordingAsyncHttpClient asyncHttpClient = new RecordingAsyncHttpClient();
-        final InstagramClient instagramClient  = new InstagramClient(asyncHttpClient, "thisIsMyClientId");
+        final InstagramClient instagramClient  = new InstagramClient(asyncHttpClient);
 
         instagramClient.fetchPopularPhotos(new InstagramClient.ResponseHandler() {
             public void onSuccess(List<Photo> photos) {

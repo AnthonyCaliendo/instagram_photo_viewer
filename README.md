@@ -43,6 +43,8 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
+To compile and run this app, you will need to edit the `Configuration.getInstagramClientId()` method to return a valid client id.  Otherwise, the app will crash upon boot.
+
 * Ran into a lot of issues trying to dynamically scale the TextView icons to match the height, eventually bailing on that.
 * Had some issues with the relative layout not cascading below/above to elements which were left/right of another element.
 

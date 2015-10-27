@@ -13,7 +13,7 @@ public class ConfigurationTest extends ActivityInstrumentationTestCase2<ViewPopu
     public void testGetInstagramClientId_LoadsFromPropertyFile() {
         assertNotNull(
                 "should retrieve a client id",
-                Configuration.getInstagramClientId(getActivity().getAssets())
+                Configuration.getInstagramClientId()
         );
     }
 }

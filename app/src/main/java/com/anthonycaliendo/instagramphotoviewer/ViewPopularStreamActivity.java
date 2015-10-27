@@ -23,7 +23,7 @@ public class ViewPopularStreamActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_popular_stream);
 
         final ListView todosListView            = (ListView) findViewById(R.id.view_popular_stream_photos);
-        final String instagramClientId          = Configuration.getInstagramClientId(getAssets());
+        final String instagramClientId          = Configuration.getInstagramClientId();
         final SwipeRefreshLayout swipeContainer = (SwipeRefreshLayout) findViewById(R.id.view_popular_stream_photos_swipe_refresh);
 
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -41,7 +41,7 @@ public class ViewPopularStreamActivity extends AppCompatActivity {
     }
 
     private void fetchItemsAndRefreshView(final ListView todosListView, final String instagramClientId) {
-        new InstagramClient(new AsyncHttpClient(), instagramClientId).fetchPopularPhotos(new InstagramClient.ResponseHandler() {
+        new InstagramClient(new AsyncHttpClient()).fetchPopularPhotos(new InstagramClient.ResponseHandler() {
             @Override
             public void onSuccess(List<Photo> photos) {
                 final PhotoListAdapter todoListAdapter = new PhotoListAdapter(ViewPopularStreamActivity.this, photos);
